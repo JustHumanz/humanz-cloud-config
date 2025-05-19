@@ -45,12 +45,9 @@ jobs:
         run: |
           pip install -r ~/.ansible/collections/ansible_collections/vexxhost/atmosphere/requirements.txt
 
-      - name: Add secret.yml
+      - name: Decrypt GPG secret.yml
         run: |
-          echo $SECRET_YML
-        shell: bash
-        env:
-          SECRET_YML : ${{secrets.SECRET_YML}}
+          gpg --quiet --batch --yes --decrypt --passphrase="${{ secrets.GPG_PASSPHRASE }}" --output inventory/group_vars/all/secrets.yml inventory/group_vars/all/secrets.yml.gpg
 
       - name: Run cloud config
         run: |
