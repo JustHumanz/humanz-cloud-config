@@ -1,0 +1,51 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Humanz Cloud config CI/CD
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "master" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  runs-on: self-hosted
+
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v4
+
+      # Install ansible 
+      - name: Install Ansible
+        shell: bash
+        run: |
+          sudo apt update
+          sudo apt install -y ansible
+
+      # Runs ansible galaxy for installing cloud config requirement
+      - name: Install cloud config requirements
+        run: |
+          ansible-galaxy collection install -r requirements.yaml
+
+      - name: Install atmosphere dependency
+        run: |
+          pip install -r ~/.ansible/collections/ansible_collections/vexxhost/atmosphere/requirements.txt
+
+      # Put secret.yml into cloud config
+      - name: Add secret.yml
+        run: |
+          echo ${{ secrets.SECRET_YML }} | base64 -d > inventory/group_vars/all/secrets.yml
+
+      - name: Run cloud config
+        run: |
+          ansible-playbook -u root --private-key <(echo -n '${{ secrets.SSH_KEY }}') -i inventory/hosts.ini playbooks/site.yml
