@@ -28,10 +28,6 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.13'
-          cache: 'pip' # caching pip dependencies
 
       # Install ansible 
       - name: Install Ansible
