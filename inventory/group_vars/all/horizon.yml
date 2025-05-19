@@ -1,0 +1,7 @@
+horizon_helm_values:
+  conf:
+    horizon:
+      branding:
+        logo_splash: "{{ lookup('file', inventory_dir ~ 'assets/logo-splash.png') | b64encode }}"
+  manifests:
+    configmap_logo: true
