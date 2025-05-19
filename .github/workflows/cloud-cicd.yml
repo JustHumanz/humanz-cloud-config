@@ -5,10 +5,6 @@ name: Humanz Cloud config CI/CD
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
-  push:
-    paths-ignore:
-      - '.github/**'  
-    branches: [ "master" ]
   pull_request:
     paths-ignore:
       - '.github/**'
@@ -51,4 +47,6 @@ jobs:
 
       - name: Run cloud config
         run: |
-          ansible-playbook -u root --private-key <(echo -n '${{ secrets.SSH_KEY }}') -i inventory/hosts.ini playbooks/site.yml
+          ansible-playbook -u root -i inventory/hosts.ini playbooks/site.yml
+        env:
+          ANSIBLE_HOST_KEY_CHECKING: false
