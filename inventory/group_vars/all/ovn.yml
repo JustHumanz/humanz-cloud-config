@@ -1,0 +1,5 @@
+ovn_helm_values:
+  conf:
+    auto_bridge_add:
+      br-ex: br-fip
+    ovn_bridge_mappings: external:br-ex
