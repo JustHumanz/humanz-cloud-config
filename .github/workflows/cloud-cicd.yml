@@ -47,7 +47,7 @@ jobs:
 
       - name: Add secret.yml
         run: |
-          echo $SECRET_YML | base64 -d > inventory/group_vars/all/secrets.yml
+          echo $SECRET_YML
         shell: bash
         env:
           SECRET_YML : ${{secrets.SECRET_YML}}
