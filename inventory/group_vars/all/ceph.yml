@@ -1,0 +1,2 @@
+ceph_mon_fsid: b5cd0de6-0c3b-561f-8a5e-8d27431b4b92
+ceph_mon_public_network: 10.10.10.0/24

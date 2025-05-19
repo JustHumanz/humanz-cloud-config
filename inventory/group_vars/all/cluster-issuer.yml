@@ -1,0 +1,2 @@
+cluster_issuer_type: none
+openstack_helm_ingress_secret_name: humanz-certs

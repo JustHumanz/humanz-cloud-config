@@ -1,0 +1,4 @@
+kube_vip_enabled: false
+kubernetes_hostname: openstack-atmosphere.humanz.cloud
+#kubernetes_keepalived_vip: 10.96.240.10
+#kubernetes_keepalived_vrid: 42
