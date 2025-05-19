@@ -49,7 +49,6 @@ rook_ceph_cluster_radosgw_spec:
   gateway:
     instances: 1
 
-cluster_issuer_type: self-signed
 csi_driver: rbd
 atmosphere_network_backend: ovn
 
