@@ -29,7 +29,10 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
-      
+        with:
+          python-version: '3.13'
+          cache: 'pip' # caching pip dependencies
+
       # Install ansible 
       - name: Install Ansible
         shell: bash
@@ -46,10 +49,12 @@ jobs:
         run: |
           pip install -r ~/.ansible/collections/ansible_collections/vexxhost/atmosphere/requirements.txt
 
-      # Put secret.yml into cloud config
       - name: Add secret.yml
         run: |
-          echo ${{ secrets.SECRET_YML }} | base64 -d > inventory/group_vars/all/secrets.yml
+          echo $SECRET_YML >> inventory/group_vars/all/secrets.yml
+        shell: bash
+        env:
+          SECRET_YML : ${{secrets.SECRET_YML}}
 
       - name: Run cloud config
         run: |
