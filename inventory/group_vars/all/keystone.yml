@@ -1,0 +1,8 @@
+keystone_helm_values:
+  conf:
+    keystone:
+      DEFAULT:
+        debug: "{{ lookup('env', 'ATMOSPHERE_DEBUG') | default('false', True) }}"
+  pod:
+    replicas:
+      api: 1

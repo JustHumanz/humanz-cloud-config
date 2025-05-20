@@ -1,0 +1,13 @@
+octavia_helm_values:
+  conf:
+    octavia:
+      controller_worker:
+        workers: 1
+    octavia_api_uwsgi:
+      uwsgi:
+        processes: 1
+  pod:
+    replicas:
+      api: 1
+      worker: 1
+      housekeeping: 1

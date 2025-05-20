@@ -1,3 +1,15 @@
+neutron_helm_values:
+  conf:
+    neutron:
+      DEFAULT:
+        api_workers: 1
+        rpc_workers: 1
+        metadata_workers: 1
+  pod:
+    replicas:
+      server: 1
+      rpc_server: 1
+      
 neutron_networks:
 - external: true
   mtu_size: 1500
