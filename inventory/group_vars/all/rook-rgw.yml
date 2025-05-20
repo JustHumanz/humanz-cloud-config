@@ -1,0 +1,7 @@
+rook_ceph_cluster_radosgw_spec:
+  metadataPool:
+    failureDomain: osd
+  dataPool:
+    failureDomain: osd
+  gateway:
+    instances: 1

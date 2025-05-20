@@ -1,0 +1,4 @@
+barbican_helm_values:
+  pod:
+    replicas:
+      api: 1

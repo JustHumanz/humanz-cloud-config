@@ -1,0 +1,17 @@
+heat_helm_values:
+  conf:
+    heat:
+      DEFAULT:
+        num_engine_workers: 1
+      heat_api:
+        workers: 1
+      heat_api_cfn:
+        workers: 1
+      heat_api_cloudwatch:
+        workers: 1
+  pod:
+    replicas:
+      api: 1
+      cfn: 1
+      cloudwatch: 1
+      engine: 1
