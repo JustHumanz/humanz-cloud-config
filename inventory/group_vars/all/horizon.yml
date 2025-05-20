@@ -1,0 +1,9 @@
+horizon_helm_values:
+  conf:
+    horizon:
+      branding:
+        logo: "{{ lookup('file', inventory_dir ~ '/../assets/logo.svg') | b64encode }}"
+        logo_splash: "{{ lookup('file', inventory_dir ~ '/../assets/logo-splash.svg') | b64encode }}"
+        favicon: "{{ lookup('file', inventory_dir ~ '/../assets/openstack-icon.svg') | b64encode }}"
+  manifests:
+    configmap_logo: true 
