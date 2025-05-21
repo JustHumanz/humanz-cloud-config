@@ -3,3 +3,8 @@ ovn_helm_values:
     auto_bridge_add:
       br-ex: br-fip
     ovn_bridge_mappings: external:br-ex
+  pod:
+    replicas:
+      ovn_ovsdb_nb: 1
+      ovn_ovsdb_sb: 1
+      ovn_northd: 1

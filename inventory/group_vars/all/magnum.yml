@@ -1,0 +1,10 @@
+magnum_helm_values:
+  conf:
+      api:
+        workers: 1
+      conductor:
+        workers: 1
+  pod:
+    replicas:
+      api: 1
+      conductor: 1
