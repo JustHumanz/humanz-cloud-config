@@ -10,3 +10,7 @@ ceph_conf_overrides:
   - section: mon
     option: auth allow insecure global id reclaim
     value: false
+
+ceph_csi_rbd_helm_values:
+  provisioner:
+    replicaCount: 1
