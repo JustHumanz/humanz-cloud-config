@@ -1,0 +1,5 @@
+staffeln_helm_values:
+  pod:
+    replicas:
+      api: 1
+      conductor: 1
