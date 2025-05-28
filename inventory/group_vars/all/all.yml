@@ -14,12 +14,5 @@ ingress_nginx_helm_values:
     config:
       worker-processes: 1
 
-percona_xtradb_cluster_spec:
-  allowUnsafeConfigurations: true
-  pxc:
-    size: 1
-  haproxy:
-    size: 1
-
 csi_driver: rbd
 atmosphere_network_backend: ovn

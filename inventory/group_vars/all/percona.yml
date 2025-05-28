@@ -1,0 +1,17 @@
+percona_xtradb_cluster_spec:
+  allowUnsafeConfigurations: true
+  pxc:
+    size: 1
+  haproxy:
+    size: 1
+  backup:
+    storages:
+      fs-pvc:
+        type: filesystem
+        volume:
+          persistentVolumeClaim:
+            storageClassName: general
+            accessModes: [ "ReadWriteOnce" ]
+            resources:
+              requests:
+                storage: 10G
