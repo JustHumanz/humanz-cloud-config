@@ -1,0 +1,9 @@
+cinder_helm_values:
+  pod:
+    replicas:
+      api: 1
+      scheduler: 1
+  conf:
+    cinder:
+      DEFAULT:
+        osapi_volume_workers: 1      
